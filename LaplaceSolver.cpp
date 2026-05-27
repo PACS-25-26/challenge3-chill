@@ -112,7 +112,6 @@ void LaplaceSolver::solve(){
         }
 
         //Aggregate all squared errors among all processes
-        double global_error = 0.0;
         MPI_Allreduce(&local_error_sq, &global_error, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
         global_error = std::sqrt(h*global_error);
 
